@@ -1,5 +1,19 @@
+:root{
+  --first-color       :#fff;
+  --alpha-color       : 0.9;
+  --second-color      : 50,51,48;
+  --second-color-rgb  :rgb(var(--second-color));
+  --t-texto           :30px;
+  --t-texto-S         :35px;
+  --t-texto--parrafos :20px;
+  --bottomPX          :20px;
+  --B-Color           : (255,255,255)
+  --b-B-Color         : rgba(var(--B-Color));
+  --btn-c-DOM-size    :100px
+  }
+
 html {
-      background-color: rgba(8, 13, 12, 0.671)
+      background-color: var(--first-color);
     }
 
    
@@ -10,6 +24,7 @@ html {
 
     header {
       margin-top: 50px;
+      border:1px solid gray;
 
     }
 
@@ -18,7 +33,7 @@ html {
     }
 
     .bg-w {
-      background-color: #999;
+      background-color:var(--first-color);
       text-align: center;
       color: black;
     }
@@ -31,4 +46,36 @@ html {
       background-color: rgb(81, 140, 168);
       text-align: center;
       color: black;
+    }
+
+/* ///////////////////////////////////////////////////////////////////////////Dark-Mode-BTN*/
+    .dark-mode-btn{
+      z-index: -999;
+      bottom: var(--bottomPX);
+      left: 10px; /* con calc() permite sumar */
+      width: var(--btn-c-DOM-size);
+      height: var(--btn-c-DOM-size);
+      background-color: darkgray;
+      color:darkred;
+      cursor: pointer; 
+      outline: 0;
+      border: 0;
+      transition: all 0.3s ease-out;
+      font-size:var(--t-texto-S);
+      outline: none;
+    }
+    .dark-mode-btn:hover{
+      outline: none;
+      border: 0;
+    }
+    
+    #containerYM{
+      width: 100vw;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+    #containerYM *{
+      margin-top: 50px;
     }

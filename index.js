@@ -1,3 +1,5 @@
+
+
 const api = {
       data : [{ "isActive": true,"content": "take out the trash"}],
       
@@ -78,7 +80,7 @@ const api = {
     
     
     class App {
-     constructor(lists, title, conteo, left) {
+      constructor(lists, title, conteo, left) {
         api.get().then( resolve => { 
           this.data = resolve 
           this.render()
@@ -87,7 +89,7 @@ const api = {
         this.title = title
         this.conteo = document.getElementById(conteo)
         this.left = document.getElementById(left)
-     }
+      }
         
       render () {
         let count = this.data.length, listItems = " ";
@@ -132,7 +134,7 @@ const api = {
     
     
     
-     add(item){
+      add(item){
         api.set(item).then( resolve => {
           this.data = resolve
           this.render()  
@@ -143,19 +145,18 @@ const api = {
               this.conteo.innerHTML = `<h3>Tasks: ${this.data.length}</h3>`
            }, 3000)
         })
-     }
+      }
     
-     toggleState(completed) {
+      toggleState(completed) {
         api.toggle().then( resolve => {
         this.data = resolve
         this.render()
         
-      })
-      this.left.innerHTML = `<h3>Items Left: ${completed}</h3>` 
-     }
+       })
+        this.left.innerHTML = `<h3>Items Left: ${completed}</h3>` 
+      }
      
-    
-     filter(key, val) {
+      filter(key, val) {
         if (key) {
           api.search(key, val).then( resolve => {
             this.data = resolve
@@ -169,19 +170,17 @@ const api = {
         }
       }
       
-    
       delete(clean,completed){
         api.delete(clean).then( resolve => {
           this.data = resolve
           this.render()  
         }) 
         this.left.innerHTML = `<h3>Items Left: ${completed}</h3>` 
-    }
+      }
     }
     
     
     const todoApp = new App('lists', 'Tasks','conteo','left')
-    
     
     
     
