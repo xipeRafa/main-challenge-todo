@@ -1,36 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ToDo List</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  </head>
+
+  <body>
+
+    <!-- Nav -->
+    <header class="nav">
+      <div class="container is-content">
+        <div class="nav-right nav-menu bg-w">
+          <div class="nav-item">
+            <button class="button is-primary is-small is-inverted" id="all">
+              All
+            </button>
+          </div>
+          <div class="nav-item">
+            <button class="button is-primary is-small is-inverted" id="completed">
+              Completed
+            </button>
+          </div>
+          <div class="nav-item">
+            <button class="button is-primary is-small is-inverted" id="active">
+              Active
+            </button>
+          </div>
+          <div class="nav-item">
+            <p class="control has-icons-left">
+
+              <!-- inline js is bad practice but this is for testing purposes -->
+              <input class="input is-small" type="text" placeholder="search" onkeydown="javascript:
+                if(event /*.keyCode == 13*/)
+                todoApp.filter('content', this.value);">
+
+              <span class="icon is-small is-left">
+                <i class="fa fa-search"></i>
+              </span>
+            </div>
+            
+          </div>
   
-  <title>Frontend Mentor | Todo app</title>
+        </div>
+      </header>
+      <!-- lists go here -->
+      <div id="lists"> </div>
+      <div class="bg-2" id="conteo"></div>
+      <div class="bg-3" id="left"></div>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+      <button class="button is-primary is-large" id="remove">
+        Clear Complete
+      </button>
 
-  Todo
+      <script src="index.js"></script>
+    </body>
 
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
-</html>
+  </html>
