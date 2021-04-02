@@ -9,7 +9,7 @@
   --bottomPX          :20px;
   --B-Color           : (255,255,255)
   --b-B-Color         : rgba(var(--B-Color));
-  --btn-c-DOM-size    :100px
+  --btn-c-DOM-size    :150px
   }
 
 html {
@@ -50,16 +50,18 @@ html {
 
 /* ///////////////////////////////////////////////////////////////////////////Dark-Mode-BTN*/
     .dark-mode-btn{
+      margin-top: 20px;
       z-index: -999;
       bottom: var(--bottomPX);
       left: 10px; /* con calc() permite sumar */
       width: var(--btn-c-DOM-size);
-      height: var(--btn-c-DOM-size);
+      height: var(--btn-c-DOM-size)/2;
       background-color: darkgray;
-      color:darkred;
+      color:white;
       cursor: pointer; 
       outline: 0;
       border: 0;
+      border-radius: 5px;
       transition: all 0.3s ease-out;
       font-size:var(--t-texto-S);
       outline: none;
