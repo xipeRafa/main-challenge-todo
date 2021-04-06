@@ -16,39 +16,55 @@
 
   <body>
 
+    <img src="images/bg-desktop-dark.jpg" class="background" />  
+
+    <div class="tittle">
+          <h1>TO DO</h1>
+
+          <div id="dark-mode-container">
+             <button id="dark-mode"  style="float: right;" class="">theme</button>
+          </div> 
+
+    </div>
+
+
+     <!-- lists go here -->
+     <div id="lists"> </div>
+
+     
     <!-- Nav -->
-    <header class="nav bg-w" >
-      <div class="container is-content">
-        <div class="nav-right nav-menu ">
-          <div class="nav-item">
-            <button class="button is-primary is-small is-inverted" id="all">
-              All
-            </button>
-          </div>
-          <div class="nav-item">
-            <button class="button is-primary is-small is-inverted" id="completed">
-              Completed
-            </button>
-          </div>
-          <div class="nav-item">
-            <button class="button is-primary is-small is-inverted" id="active">
-              Active
-            </button>
-          </div>
-       </div>
-      </header>
-      <!-- lists go here -->
-      <div id="lists"> </div>
-      <div class="bg-2" id="conteo"></div>
-      <div class="bg-3" id="left"></div>
+    
+      
+      <div class="nav-right nav-menu controls">
+              <div id="left">
+              </div>
 
-      <button class="button is-primary is-large" id="remove">
-        Clear Complete
-      </button>
+        <div class="">
 
-      <div id="dark-mode-container">
-        <button id="dark-mode" class="dark-mode-btn">click</button>
+          <div  id="all">
+             All
+          </div>
+          <div id="completed">
+             Completed
+          </div>
+          <div id="active">
+             Active
+          </div>
+
+        </div>
+
+              <div id="remove">
+                  Clear Complete
+              </div>
+
       </div>
+     
+
+      
+
+    
+
+    
 
       <script src="index.js"></script>
       <script src="theme.js"></script>

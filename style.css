@@ -1,19 +1,25 @@
 :root{
   --first-color       :#fff;
   --alpha-color       : 0.9;
-  --second-color      : 50,51,48;
+  --second-color      : #1c1c2d;
   --second-color-rgb  :rgb(var(--second-color));
   --t-texto           :30px;
   --t-texto-S         :35px;
   --t-texto--parrafos :20px;
   --bottomPX          :20px;
-  --B-Color           : (255,255,255)
+  --B-Color           : (255,255,255);
   --b-B-Color         : rgba(var(--B-Color));
   --btn-c-DOM-size    :150px
   }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 html {
-      background-color: var(--first-color);
+      
     }
 
    
@@ -32,21 +38,7 @@ html {
           display: none;
     }
 
-    .bg-w {
-      background-color:var(--first-color);
-      text-align: center;
-      color: black;
-    }
-    .bg-2 {
-      background-color: rgb(98, 111, 189);
-      text-align: center;
-      color: black;
-    }
-    .bg-3 {
-      background-color: rgb(81, 140, 168);
-      text-align: center;
-      color: black;
-    }
+ 
 
 /* ///////////////////////////////////////////////////////////////////////////Dark-Mode-BTN*/
     .dark-mode-btn{
@@ -56,7 +48,6 @@ html {
       left: 10px; /* con calc() permite sumar */
       width: var(--btn-c-DOM-size);
       height: var(--btn-c-DOM-size)/2;
-      background-color: darkgray;
       color:white;
       cursor: pointer; 
       outline: 0;
@@ -65,19 +56,101 @@ html {
       transition: all 0.3s ease-out;
       font-size:var(--t-texto-S);
       outline: none;
+      float: right;
+      background-color: transparent;
     }
     .dark-mode-btn:hover{
       outline: none;
       border: 0;
     }
     
-    #containerYM{
-      width: 100vw;
-      height: 80vh;
+
+    .controls{
+      background-color: var(--first-color);
       display: flex;
-      flex-direction: column;
-      justify-content: start;
+      flex-direction: row;
+      justify-content: space-between;
+      border-radius: 0 0 5px 5px;
+      color:gray;
+      box-shadow: 0 1rem 1rem 0.3rem rgba(0, 0, 0, 0.11);
+       padding:6px  10px;    
     }
-    #containerYM *{
-      margin-top: 50px;
+    .controls>div{
+      display: flex;
+      flex-direction: row;
+      margin: 5px;
+      padding: 5px;
+      cursor: pointer;
     }
+    .controls>div>div:hover{
+      color:blue ;
+    }
+
+    .controls>div>div{
+      margin: 0 5px;
+      padding: 0 5px;
+      cursor: pointer;
+    }
+
+
+
+    .list-tasks{
+      margin: 20px 0 0 0;
+      background-color: var(--first-color);
+      
+      box-shadow: 0 1rem 1rem 0.3rem rgba(0, 0, 0, 0.1);
+      
+    }
+    .list-tasks>a:hover{
+      background-color: transparent;
+    }
+
+    .list-tasks>a{
+     color: gray;
+     padding: 14px;
+     border: 0;
+     border-bottom: .1px solid gray;
+    }
+
+    .list-tasks>a:first-child{
+      
+        border-top:1px solid transparent;
+        border-radius: 5px 5px 0 0;
+    }
+
+
+.background {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+}
+
+.tittle{
+  overflow: hidden;
+  padding-top: 1.4rem;
+}
+
+
+h1{
+  color:#fff;
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  float: left;
+  
+}
+
+.input-text{
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  background-color: var(--first-color);
+  outline: none;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  color: gray;
+}
