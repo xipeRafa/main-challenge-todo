@@ -3,14 +3,14 @@
 let lsDarkMode=localStorage.getItem('dark-mode')
 const $dark_mode = document.getElementById("dark-mode-container"),
       darkModeActive=_=>{
-        $dark_mode.innerHTML=`<button id="dark-mode-active" class="dark-mode-btn">Light</button>`
-        document.documentElement.style.setProperty('--first-color','#666')
+        $dark_mode.innerHTML=`<button id="dark-mode-active" class="dark-mode-btn">☀</button>`
+        document.documentElement.style.setProperty('--first-color','#1a1a2d')
         document.documentElement.style.setProperty('--second-color','#fff')
         document.documentElement.style.setProperty('--b-B-Color','#616061')
         localStorage.setItem('dark-mode',true)
       },
       darkModeDesActive=_=>{
-        $dark_mode.innerHTML=`<button id="dark-mode" class="dark-mode-btn">Dark </button>`
+        $dark_mode.innerHTML=`<button id="dark-mode" class="dark-mode-btn">☾</button>`
         document.documentElement.style.setProperty('--first-color','#fff')
         document.documentElement.style.setProperty('--second-color','#fff')
         document.documentElement.style.setProperty('--b-B-Color','white')

@@ -80,14 +80,12 @@ const api = {
     
     
     class App {
-      constructor(lists, title, conteo, left) {
+      constructor(lists, left) {
         api.get().then( resolve => { 
           this.data = resolve 
           this.render()
        })
         this.lists = document.getElementById(lists)
-        this.title = title
-        this.conteo = document.getElementById(conteo)
         this.left = document.getElementById(left)
       }
         
@@ -108,26 +106,31 @@ const api = {
         }
     
         const list = `<div class="panel bg-w">
-                        <p class="panel-heading">
-                         ${this.title}
-                        </p>
+                     
     
-                        <input class="input" type="text"
-                               placeholder="Enter Text" 
+                        
+                      </div>
+                      <input class="input-text" type="text"
+                               placeholder="O Create a new todo..." 
              
                                onkeydown="javascript: if(event.keyCode == 13){
                                     todoApp.add(this.value); 
                                     this.value='';
                                }">
-                       ${listItems}
-                      </div>`
+
+                       <div class="list-tasks">
+                           ${listItems}
+                       </div>
+                      
+                      
+                      
+                      `
     
           let completed = this.data.filter(i => i.isActive).length;
           console.log('length',completed)
     
           
           this.lists.innerHTML = list
-          this.conteo.innerHTML = `<h3>Tasks: ${this.data.length}</h3>` 
           this.left.innerHTML = `<h3>Items Active: ${completed}</h3>`  
          
       }
@@ -138,8 +141,7 @@ const api = {
         api.set(item).then( resolve => {
           this.data = resolve
           this.render()  
-         
-          this.conteo.innerHTML = `<h3>Item Added</h3>`
+
     
           setTimeout(() => {
               this.conteo.innerHTML = `<h3>Tasks: ${this.data.length}</h3>`
@@ -180,7 +182,7 @@ const api = {
     }
     
     
-    const todoApp = new App('lists', 'Tasks','conteo','left')
+    const todoApp = new App('lists', 'left')
     
     
     
