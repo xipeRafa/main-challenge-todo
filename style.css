@@ -7,7 +7,7 @@
   --t-texto-S         :35px;
   --t-texto--parrafos :20px;
   --bottomPX          :20px;
-  --B-Color           : (255,255,255);
+  --B-Color           : #393a4c;
   --b-B-Color         : rgba(var(--B-Color));
   --btn-c-DOM-size    :150px
   }
@@ -147,7 +147,7 @@ h1{
 .input-text{
   width: 100%;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: var(--first-color);
   outline: none;
   border: 1px solid transparent;

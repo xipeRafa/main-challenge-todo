@@ -105,11 +105,7 @@ const api = {
                        </a>`
         }
     
-        const list = `<div class="panel bg-w">
-                     
-    
-                        
-                      </div>
+        const list = `
                       <input class="input-text" type="text"
                                placeholder="O Create a new todo..." 
              
@@ -141,11 +137,6 @@ const api = {
         api.set(item).then( resolve => {
           this.data = resolve
           this.render()  
-
-    
-          setTimeout(() => {
-              this.conteo.innerHTML = `<h3>Tasks: ${this.data.length}</h3>`
-           }, 3000)
         })
       }
     
