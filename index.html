@@ -11,8 +11,9 @@
       <link rel="stylesheet" href="style.css">
       <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
    </head>
+   <script>const ID = document.getElementById.bind(document);</script>
    <body>
-     
+
       <img src="images/bg-desktop-dark.jpg" class="background" />  
 
       <div class="tittle">
@@ -26,7 +27,7 @@
            class="input" 
            type="text" 
            placeholder="search" 
-           onkeydown="javascript: /* if(event.keyCode == 13) */todoApp.filter('content', this.value)"
+           onkeydown="javascript: if(event.keyCode == 13) todoApp.filter('content', this.value)"
       />
 
       <!-- lists go here -->
