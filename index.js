@@ -6,13 +6,15 @@ ID("completed").addEventListener("click", ()=> { todoApp.filter('isActive', fals
 
 const api = {
 
-    data: [{"isActive": true,"content": "bbbbbbb"},{"isActive": false,"content": "aaaaaaa"}],
+    data: [{'id': Date.now(),"isActive": true,"content": "aaaaaa"},
+           {'id': Date.now()+1,"isActive": false,"content": "bbbbbb"},
+           {'id': Date.now()+2,"isActive": false,"content": "cccccc"} ],
 
     get: function() { return new Promise((resolve) => { setTimeout(() => { resolve(this.data) }, 160) }) },
 
     set: function() {
-      this.data.unshift({'isActive': true,'content': event.target.value} )
-      return new Promise((resolve) => { setTimeout(() => { resolve(this.data) }, 150) })
+      this.data.push({'id': Date.now(),'isActive': true,'content': event.target.value} )
+      return new Promise((resolve) => { console.log('data:', this.data), setTimeout(() => { resolve(this.data) }, 150) })
     },
 
     toggle: function() {
@@ -23,8 +25,8 @@ const api = {
     search: function(key, value) {
       return new Promise((resolve) => {
           typeof value === 'string' // or boolean
-             ? search = this.data.filter(el => el[key].indexOf(value) > -1, console.log('string'))  
-             : search = this.data.filter(el => el[key] === value, console.log('boolean')) 
+             ? search = this.data.filter(el => el[key].indexOf(value) > -1)  
+             : search = this.data.filter(el => el[key] === value) 
           resolve(search)
       })
     },
@@ -35,11 +37,38 @@ const api = {
     },
 
     edited: function(){
-      let txt = event.target.previousElementSibling.previousElementSibling.innerText
-      ID('textId').value = txt
-      let ind = this.data.findIndex(el => el.content === txt)
-      this.data.splice(ind,1)  
-      return new Promise((resolve) => { setTimeout(() => { resolve(this.data) }, 100000) })  
+      /*let txt = event.target.previousElementSibling.previousElementSibling.id = Date.now() set id when clicked */ 
+      let dis = document.getElementsByClassName("disabled")
+      for (const el of dis) {
+        el.setAttribute("disabled", "true");
+      /*   el.style.backgroundColor='lightgray';
+        el.style.color='gray'; */
+        el.style.cursor='none'
+      }
+
+    /*   let x = document.getElementsByClassName("disabled");
+      for (let i=0; i<x.length; i++) {
+      x[i].style.color = "blue"; 
+    }*/
+
+
+      let btnEdit = event.target
+
+      let txt  = btnEdit.previousElementSibling.previousElementSibling.innerText //get text of element clicked 
+
+      let idElementClicked = this.data.find(el => el.content === txt).id // find id of element with text gotted clicking
+        console.log('id of element clicked:', idElementClicked) 
+
+      ID('textId').value = txt // move the text to input text
+      ID('textId').style.border='2px solid lightblue'
+      ID('textId').focus()
+      let ind = this.data.findIndex(el => el.id === idElementClicked)
+        console.log('index of Element clicked:', ind)
+
+      this.data.splice(ind,1)   
+       
+      return new Promise((resolve) => { setTimeout(() => { resolve(this.data) }, 100000) })   
+    
     },
 
     deleted: function(){
@@ -47,8 +76,9 @@ const api = {
       let ind = this.data.findIndex(el => el.content === txt)
       this.data.splice(ind,1)
       return new Promise((resolve) => { setTimeout(() => { resolve(this.data) }, 10) } )  
-    },
+    }
 }
+
 
 
 class App {
@@ -59,15 +89,15 @@ class App {
   }
 
   render() {
-      let count = this.data.length
+      let count = this.data.length //index
       let listItems = " "
       while (count--) {
         listItems += `
-          <a class="panel-block ${( this.data[count].isActive ? '' : 'is-active' )}" onClick="todoApp.toggleState()">
-            <span class="panel-icon">  <i class="fa fa-check"></i>  </span> ${this.data[count].content}
+          <a class="panel-block disabled ${( this.data[count].isActive ? '' : 'is-active' )}" onClick="todoApp.toggle()">
+            <span class="panel-icon">  <i class="fa fa-check"></i>  </span>  ${this.data[count].content}
           </a> 
-          <div class="delet" onClick="todoApp.delet()">Delete</div>
-          <div class="edit" id='edit' onClick="todoApp.edit()">Edit</div> 
+          <button class="delet disabled" onClick="todoApp.delet()">Delete</button>
+          <button class="edit disabled"  onClick="todoApp.edit()">Edit</button> 
         `
       }  
       const list = `
@@ -83,9 +113,15 @@ class App {
       this.left.innerHTML = `<h3>Items Active: ${ this.data.filter(i => i.isActive).length }</h3>`
   }
     
-    add(value){ api.set(value).then(resolve => { this.data = resolve; this.render() }) }
+    add(value){  
+                let rep = this.data.map(el => el.content).includes(value)
 
-    toggleState() { api.toggle().then(resolve => { this.data = resolve; this.render() }) }
+                    rep === true
+                      ? alert('are you repeating the note?')
+                      : api.set(value).then(resolve => { this.data = resolve; this.render() }) 
+    }
+
+    toggle() { api.toggle().then(resolve => { this.data = resolve; this.render() }) }
 
     filter(key, val) { key ? api.search(key, val).then(resolve => { this.data = resolve; this.render() })
                            : api.get().then(resolve => { this.data = resolve; this.render() }) } // All
