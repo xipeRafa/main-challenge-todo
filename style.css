@@ -198,4 +198,12 @@ h1{
 }
 .is-active{
   color: #fff!important;
+  border-left: 2px solid rgb(120, 260, 220)!important;
+}
+#verr{
+  border: 1px solid red!important;
+}
+
+.falses{
+  border: 1px solid green!important;
 }
